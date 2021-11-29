@@ -9,9 +9,9 @@ import Foundation
 
 import UIKit
 
-
 class NewsController: UITableViewController {
     
+    let cellId = "cellId"
     private(set) var categories: [Category] = []
     private let viewModel = NewsViewModel()
     
@@ -27,7 +27,8 @@ class NewsController: UITableViewController {
         tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "NewsFooterView")
         
         //Register Tableview cell
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "NewsCell")
+//        /tableView.register(UITableViewCell.self, forCellReuseIdentifier: "NewsCell")
+        tableView.register(NewsCell.self, forCellReuseIdentifier: cellId)
         
         //Nav titile
         navigationItem.title = "Latest News"
@@ -83,8 +84,9 @@ extension NewsController {
         
         switch row.category {
         case .general(let model):
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath)
-            cell.textLabel?.text = model.title
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NewsCell
+            cell.titleLabel.text = model.title
+            cell.descriptionLabel.text = model.title
             return cell
         }
     }

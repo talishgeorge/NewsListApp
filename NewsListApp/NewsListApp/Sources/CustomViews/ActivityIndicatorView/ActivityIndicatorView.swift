@@ -40,7 +40,7 @@ public class ActivityIndicator: NSObject {
         if let windowObj = delegate.window {
             window = windowObj
         } else {
-            window = UIApplication.shared.keyWindow!
+            window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
         }
         statusLabel = nil
         backgroundView = nil
@@ -275,12 +275,13 @@ public class ActivityIndicator: NSObject {
     }
     
     // MARK: - Keyboard Notifications
-    
+    //viewWillTransitionToSize:withTransitionCoordinator:
     private func registerForKeyboardNotificatoins() {
-        NotificationCenter.default.addObserver(self, selector: #selector(configureActivityIndicatorPosition),
-                                               name: UIApplication.didChangeStatusBarOrientationNotification,
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(configureActivityIndicatorPosition),
+                                               name: UIDevice.orientationDidChangeNotification,
                                                object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(configureActivityIndicatorPosition),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(configureActivityIndicatorPosition),

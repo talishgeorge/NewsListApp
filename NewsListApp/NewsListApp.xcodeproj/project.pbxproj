@@ -50,6 +50,11 @@
 		8364904B27550CA5004AB46A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8364904A27550CA5004AB46A /* UIViewController+Extensions.swift */; };
 		8364904C27550CA5004AB46A /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8364904A27550CA5004AB46A /* UIViewController+Extensions.swift */; };
 		8364906127551809004AB46A /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8364906027551809004AB46A /* CellViewModel.swift */; };
+		8364906E27551F5B004AB46A /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8364906D27551F5B004AB46A /* NewsCell.swift */; };
+		8364907327552C3A004AB46A /* Factories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8364907227552C3A004AB46A /* Factories.swift */; };
+		8364907B27552E55004AB46A /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8364907A27552E55004AB46A /* UIColor+Extensions.swift */; };
+		8364908027552EA3004AB46A /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8364907F27552EA3004AB46A /* NSLayoutConstraint+Extensions.swift */; };
+		8364908D2755302A004AB46A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8364908C2755302A004AB46A /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +109,11 @@
 		8364904127550B0E004AB46A /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		8364904A27550CA5004AB46A /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		8364906027551809004AB46A /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
+		8364906D27551F5B004AB46A /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		8364907227552C3A004AB46A /* Factories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factories.swift; sourceTree = "<group>"; };
+		8364907A27552E55004AB46A /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		8364907F27552EA3004AB46A /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
+		8364908C2755302A004AB46A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,10 +164,8 @@
 		83648F792754F6AF004AB46A /* NewsListApp */ = {
 			isa = PBXGroup;
 			children = (
-				8364900C275502F7004AB46A /* ViewControllers */,
-				83648FF5275501FF004AB46A /* CustomViews */,
-				83648FEB2755014C004AB46A /* Extensions */,
-				83648FAD2754FDC5004AB46A /* WebserviceManager */,
+				8364908B27552FDF004AB46A /* Resources */,
+				8364908427552F6D004AB46A /* Sources */,
 				83648F7A2754F6AF004AB46A /* AppDelegate.swift */,
 				83648F7C2754F6AF004AB46A /* SceneDelegate.swift */,
 				83648F832754F6B2004AB46A /* Assets.xcassets */,
@@ -217,6 +225,8 @@
 				8364900627550289004AB46A /* UIView+ContainerView.swift */,
 				8364904127550B0E004AB46A /* UITableView+Extensions.swift */,
 				8364904A27550CA5004AB46A /* UIViewController+Extensions.swift */,
+				8364907A27552E55004AB46A /* UIColor+Extensions.swift */,
+				8364907F27552EA3004AB46A /* NSLayoutConstraint+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -224,6 +234,7 @@
 		83648FF5275501FF004AB46A /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				8364907227552C3A004AB46A /* Factories.swift */,
 				83648FF62755021B004AB46A /* ActivityIndicatorView */,
 			);
 			path = CustomViews;
@@ -237,15 +248,6 @@
 				83648FF727550245004AB46A /* ActivityInidicatorViewStyle+Animation.swift */,
 			);
 			path = ActivityIndicatorView;
-			sourceTree = "<group>";
-		};
-		8364900C275502F7004AB46A /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				8364905027550DE4004AB46A /* News */,
-				8364905427550E60004AB46A /* Home */,
-			);
-			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		8364905027550DE4004AB46A /* News */ = {
@@ -271,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				8364900D27550309004AB46A /* NewsController.swift */,
+				8364906C27551F22004AB46A /* CustomCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -297,6 +300,58 @@
 			children = (
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		8364906C27551F22004AB46A /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				8364906D27551F5B004AB46A /* NewsCell.swift */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		8364908427552F6D004AB46A /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				8364908527552F79004AB46A /* Features */,
+				83648FAD2754FDC5004AB46A /* WebserviceManager */,
+				83648FEB2755014C004AB46A /* Extensions */,
+				83648FF5275501FF004AB46A /* CustomViews */,
+				8364908727552F9F004AB46A /* BaseClasses */,
+				8364908627552F8E004AB46A /* AppConfiguration  */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		8364908527552F79004AB46A /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				8364905427550E60004AB46A /* Home */,
+				8364905027550DE4004AB46A /* News */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		8364908627552F8E004AB46A /* AppConfiguration  */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "AppConfiguration ";
+			sourceTree = "<group>";
+		};
+		8364908727552F9F004AB46A /* BaseClasses */ = {
+			isa = PBXGroup;
+			children = (
+				8364908C2755302A004AB46A /* BaseViewController.swift */,
+			);
+			path = BaseClasses;
+			sourceTree = "<group>";
+		};
+		8364908B27552FDF004AB46A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,6 +488,9 @@
 				83648FD72755000B004AB46A /* NewsSourcesResponse.swift in Sources */,
 				8364900727550289004AB46A /* UIView+ContainerView.swift in Sources */,
 				83648FC12754FE72004AB46A /* WebserviceManager.swift in Sources */,
+				8364907B27552E55004AB46A /* UIColor+Extensions.swift in Sources */,
+				8364908027552EA3004AB46A /* NSLayoutConstraint+Extensions.swift in Sources */,
+				8364908D2755302A004AB46A /* BaseViewController.swift in Sources */,
 				83648FFC27550245004AB46A /* ActivityIndicatorViewStyle.swift in Sources */,
 				83648FCB2754FEC2004AB46A /* ResponseModel.swift in Sources */,
 				83648FBC2754FE42004AB46A /* LogManager.swift in Sources */,
@@ -448,10 +506,12 @@
 				83648FFE27550245004AB46A /* ActivityIndicatorView.swift in Sources */,
 				83648F7D2754F6AF004AB46A /* SceneDelegate.swift in Sources */,
 				83648FC62754FEA2004AB46A /* RequestModel.swift in Sources */,
+				8364907327552C3A004AB46A /* Factories.swift in Sources */,
 				8364902A27550630004AB46A /* MainTabBarController.swift in Sources */,
 				83648FFA27550245004AB46A /* ActivityInidicatorViewStyle+Animation.swift in Sources */,
 				83649021275503AB004AB46A /* NewsServices.swift in Sources */,
 				8364906127551809004AB46A /* CellViewModel.swift in Sources */,
+				8364906E27551F5B004AB46A /* NewsCell.swift in Sources */,
 				83648FE627550082004AB46A /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

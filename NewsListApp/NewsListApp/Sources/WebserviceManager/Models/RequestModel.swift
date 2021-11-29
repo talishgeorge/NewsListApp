@@ -63,9 +63,9 @@ extension RequestModel {
     }
     
     func urlEncoder() -> URLRequest {
-        var endpoint: String = ServiceManager.shared.baseURL.appending(path)
+        let endpoint: String = ServiceManager.shared.baseURL.appending(path)
         
-        var request: URLRequest = URLRequest(url: URL(string: endpoint)!)
+        let request: URLRequest = URLRequest(url: URL(string: endpoint)!)
         
         return request
     }
