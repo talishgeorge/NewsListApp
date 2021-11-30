@@ -21,7 +21,7 @@ extension Category {
         do {
             if let bundlePath = Bundle.main.path(forResource: ApiConstants.article,
                                                  ofType: ApiConstants.decodingType),
-                let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
+               let jsonData = try String(contentsOfFile: bundlePath).data(using: .utf8) {
                 do {
                     let data = try JSONDecoder().decode(NewsSourcesResponse.self, from: jsonData).articles
                     let category = Category(title: ApiConstants.newsCategory, articles: data)

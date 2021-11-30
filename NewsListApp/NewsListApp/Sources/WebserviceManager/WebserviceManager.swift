@@ -36,7 +36,7 @@ extension ServiceManager {
                     completion(Result.success(resource.parse(data)))
                 }
             } else {
-               completion(Result.failure(ErrorModel.generalError()))
+                completion(Result.failure(ErrorModel.generalError()))
             }
         }
         .resume()

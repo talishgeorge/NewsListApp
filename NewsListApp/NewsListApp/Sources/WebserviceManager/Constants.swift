@@ -28,3 +28,9 @@ struct ApiConstants {
     static public let decodingType = "json"
     static let news: String = "top-headlines?category=General&country=us&apiKey=6a3ce0a5c952460fb0ea2fd9163d9ddf"
 }
+
+/// Cell Identifiers
+struct CellIdentifiers {
+    static public let newsHeaderCell  = "NewsHeaderView"
+    static public let newsCell  = "NewsTableViewCell"
+}
