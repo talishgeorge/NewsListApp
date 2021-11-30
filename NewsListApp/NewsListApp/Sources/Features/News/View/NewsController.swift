@@ -118,7 +118,6 @@ extension NewsController {
     }
 }
 
-
 extension NewsController: CategoryListViewModelDelegate {
     
     /// Refresh UI
