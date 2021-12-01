@@ -24,8 +24,8 @@ protocol TableViewSection: Equatable {
 /// Category List Model
 /// Protocol
 protocol CategoryListViewModelDelegate: class {
-    func categoryListViewModelDidStartRefresh(_ viewModel: CategoryListViewModel)
-    func categoryListViewModel(_ viewModel: CategoryListViewModel, didFinishWithError error: Error?)
+    func categoryListViewModelDidStartRefresh(_ viewModel: CategoryListViewModel, success: Bool?, dataCount: Int?)
+    func categoryListViewModel(_ viewModel: CategoryListViewModel, didFinishWithError error: Error?, success: Bool?, dataCount: Int?)
 }
 
 final class CategoryListViewModel: BaseViewModel {
@@ -123,9 +123,11 @@ extension CategoryListViewModel {
     
     /// Fetch News
     /// - Parameter category: String
-    func fetchNews(by category: String) {
+    func fetchNews(by category: String, offset: Int, limit: Int, shouldAppend: Bool) {
         let closureSelf = self
-        webService.getNews(category: category) { result in
+        let page = offset / limit
+        print("page: \(page+1), per-page=\(limit)")
+        webService.getNews(page: page, perPage: limit, category: category) { result in
             var categories = [Category]()
             switch result {
             case Result.success(let response):
@@ -133,11 +135,11 @@ extension CategoryListViewModel {
                 categories.append(category)
                 closureSelf.categories = categories
                 DispatchQueue.main.async {
-                    closureSelf.delegate?.categoryListViewModelDidStartRefresh(self)
+                    closureSelf.delegate?.categoryListViewModelDidStartRefresh(self, success: true, dataCount: categories[0].articles.count)
                 }
             case Result.failure(let error):
                 DispatchQueue.main.async {
-                    closureSelf.delegate?.categoryListViewModel(self, didFinishWithError: error)
+                    closureSelf.delegate?.categoryListViewModel(self, didFinishWithError: error, success: false, dataCount: 0)
                 }
             }
         }
@@ -146,7 +148,7 @@ extension CategoryListViewModel {
     /// Show offline data
     func showOfflineData() {
         categories = Category.loadLocalData()
-        self.delegate?.categoryListViewModelDidStartRefresh(self)
+        self.delegate?.categoryListViewModelDidStartRefresh(self, success: true, dataCount: categories[0].articles.count)
     }
 }
 

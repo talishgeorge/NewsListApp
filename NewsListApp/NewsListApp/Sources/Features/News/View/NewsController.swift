@@ -14,7 +14,8 @@ class NewsController: UITableViewController {
     let cellId = "cellId"
     private(set) var categories: [Category] = []
     private let viewModel = CategoryListViewModel()
-    private var pullControl = UIRefreshControl()
+    private var tableviewPaginator: TableviewPaginator?
+    private let limit = 20
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,33 +30,16 @@ class NewsController: UITableViewController {
         tableView.rowHeight = UITableView.automaticDimension
         //Register Tableview cell
         tableView.register(NewsCell.self, forCellReuseIdentifier: cellId)
-        
+        tableView.register(LoadMoreCell.self, forCellReuseIdentifier: "LoadMoreCell")
         //Nav titile
         navigationItem.title = "Latest News"
         navigationController?.navigationBar.prefersLargeTitles = true
         
         // Service call to fetch latest news
         ActivityIndicator.show("Please Wait...")
-        fetchNews(by: ApiConstants.newsCategory)
         
-        pullControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        pullControl.addTarget(self, action: #selector(refreshListData(_:)), for: .valueChanged)
-        pullControl.tintColor = UIColor.red
-        if #available(iOS 10.0, *) {
-            tableView.refreshControl = pullControl
-            tableView.addSubview(pullControl)
-        } else {
-            tableView.addSubview(pullControl)
-        }
-    }
-}
-
-extension NewsController {
-    
-    /// Fetch News
-    /// - Parameter category: String
-    func fetchNews(by category: String) {
-        viewModel.fetchNews(by: ApiConstants.newsCategory)
+        tableviewPaginator = TableviewPaginator.init(paginatorUI: self, delegate: self)
+        tableviewPaginator?.initialSetup()
     }
 }
 
@@ -67,26 +51,43 @@ extension NewsController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.numberOfRowsInSection(section)
+        
+        viewModel.numberOfRowsInSection(section) + (tableviewPaginator?.rowsIn(section: section) ?? 0)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let newsData = viewModel.sections[indexPath.section].rows[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! NewsCell
-        switch newsData.category {
-        case .general(let model):
-            cell.updateUI(model)
+        if let cell = tableviewPaginator?.cellForLoadMore(at: indexPath) {
+            return cell
         }
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? NewsCell else {
+            return UITableViewCell.init()
+        }
+        if viewModel.sections[indexPath.section].rows.count > indexPath.row {
+            let newsData = viewModel.sections[indexPath.section].rows[indexPath.row]
+            switch newsData.category {
+            case .general(let model):
+                cell.updateUI(model)
+            }
+        }
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if let height = tableviewPaginator?.heightForLoadMore(cell: indexPath) {
+            return height
+        }
         return UITableView.automaticDimension
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return UITableView.automaticDimension
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        tableviewPaginator?.scrollViewDidScroll(scrollView)
     }
 }
 
@@ -112,23 +113,29 @@ extension NewsController {
             fatalError("Unable to get the selected row")
         }
     }
-    
-    @objc func refreshListData(_ sender: Any) {
-        fetchNews(by: ApiConstants.newsCategory)
-    }
 }
 
 extension NewsController: CategoryListViewModelDelegate {
     
     /// Refresh UI
-    func categoryListViewModelDidStartRefresh(_ viewModel: CategoryListViewModel) {
+    func categoryListViewModelDidStartRefresh(_ viewModel: CategoryListViewModel, success: Bool?, dataCount: Int?) {
+        if success! {
+            tableviewPaginator?.incrementOffsetBy(delta: dataCount!)
+        }
+        
+        tableviewPaginator?.partialDataFetchingDone()
+        
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
         ActivityIndicator.dismiss()
     }
     
     /// Show Error
-    func categoryListViewModel(_ viewModel: CategoryListViewModel, didFinishWithError error: Error?) {
+    func categoryListViewModel(_ viewModel: CategoryListViewModel, didFinishWithError error: Error?, success: Bool?, dataCount: Int?) {
+        if success! {
+            tableviewPaginator?.incrementOffsetBy(delta: dataCount!)
+        }
+        tableviewPaginator?.partialDataFetchingDone()
         guard let errorDescription = error?.localizedDescription, !errorDescription.isEmpty else {
             return
         }
@@ -139,3 +146,36 @@ extension NewsController: CategoryListViewModelDelegate {
     }
 }
 
+extension NewsController: TableviewPaginatorUIProtocol {
+    func getTableview(paginator: TableviewPaginator) -> UITableView {
+        return tableView
+    }
+    
+    func shouldAddRefreshControl(paginator: TableviewPaginator) -> Bool {
+        return true
+    }
+    
+    func getPaginatedLoadMoreCellHeight(paginator: TableviewPaginator) -> CGFloat {
+        return 44
+    }
+    
+    func getPaginatedLoadMoreCell(paginator: TableviewPaginator) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "LoadMoreCell") as? LoadMoreCell {
+            cell.loadMoreActivityIndicatorView.startAnimating()
+            cell.loadMoreActivityIndicatorView.isHidden = false
+            return cell
+        } else {
+            return UITableViewCell.init()
+        }
+    }
+    
+    func getRefreshControlTintColor(paginator: TableviewPaginator) -> UIColor {
+        return UIColor.tintColor
+    }
+}
+
+extension NewsController: TableviewPaginatorProtocol {
+    func loadPaginatedData(offset: Int, shouldAppend: Bool, paginator: TableviewPaginator) {
+        viewModel.fetchNews(by: ApiConstants.newsCategory, offset: offset, limit: limit, shouldAppend: shouldAppend)
+    }
+}

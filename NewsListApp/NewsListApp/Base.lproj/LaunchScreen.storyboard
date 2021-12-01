@@ -20,15 +20,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="yPQ-i7-Mqm">
-                                <rect key="frame" x="0.0" y="0.0" width="444" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="yPQ-i7-Mqm" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="3Ju-1a-8Ct"/>
-                            <constraint firstItem="yPQ-i7-Mqm" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="ooB-a9-yYe"/>
-                            <constraint firstAttribute="bottom" secondItem="yPQ-i7-Mqm" secondAttribute="bottom" id="p5N-hd-IGy"/>
-                            <constraint firstAttribute="trailing" secondItem="yPQ-i7-Mqm" secondAttribute="trailing" constant="-30" id="tH9-jk-kkP"/>
+                            <constraint firstItem="yPQ-i7-Mqm" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="4Wr-lD-c3M"/>
+                            <constraint firstAttribute="trailing" secondItem="yPQ-i7-Mqm" secondAttribute="trailing" id="D1K-c4-tJi"/>
+                            <constraint firstAttribute="bottom" secondItem="yPQ-i7-Mqm" secondAttribute="bottom" id="MrJ-HY-vbV"/>
+                            <constraint firstItem="yPQ-i7-Mqm" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="wiM-MQ-nKY"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -38,7 +38,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splash" width="375" height="667"/>
+        <image name="splash" width="310.5" height="552"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

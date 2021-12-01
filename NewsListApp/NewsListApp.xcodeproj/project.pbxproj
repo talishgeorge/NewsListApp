@@ -56,6 +56,8 @@
 		836490D82755F08D004AB46A /* NewsListAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83648F912754F6B2004AB46A /* NewsListAppTests.swift */; };
 		836490EA2755F10E004AB46A /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83648FE527550082004AB46A /* Category.swift */; };
 		836490EE2755F131004AB46A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83648FB62754FE22004AB46A /* Constants.swift */; };
+		8364912A27566A7F004AB46A /* TableviewPaginator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8364912927566A7F004AB46A /* TableviewPaginator.swift */; };
+		8364912F27566CD8004AB46A /* LoadMoreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8364912E27566CD8004AB46A /* LoadMoreCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +120,8 @@
 		836490A52755A6E7004AB46A /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
 		836490AB2755A866004AB46A /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		836490B12755AC9D004AB46A /* NewsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsHeaderView.swift; sourceTree = "<group>"; };
+		8364912927566A7F004AB46A /* TableviewPaginator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableviewPaginator.swift; sourceTree = "<group>"; };
+		8364912E27566CD8004AB46A /* LoadMoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +241,7 @@
 			children = (
 				8364907227552C3A004AB46A /* Factories.swift */,
 				83648FF62755021B004AB46A /* ActivityIndicatorView */,
+				8364912927566A7F004AB46A /* TableviewPaginator.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -309,6 +314,7 @@
 			children = (
 				8364906D27551F5B004AB46A /* NewsCell.swift */,
 				836490B12755AC9D004AB46A /* NewsHeaderView.swift */,
+				8364912E27566CD8004AB46A /* LoadMoreCell.swift */,
 			);
 			path = CustomCell;
 			sourceTree = "<group>";
@@ -498,6 +504,7 @@
 				8364907B27552E55004AB46A /* UIColor+Extensions.swift in Sources */,
 				8364908027552EA3004AB46A /* NSLayoutConstraint+Extensions.swift in Sources */,
 				8364908D2755302A004AB46A /* BaseViewController.swift in Sources */,
+				8364912F27566CD8004AB46A /* LoadMoreCell.swift in Sources */,
 				83648FFC27550245004AB46A /* ActivityIndicatorViewStyle.swift in Sources */,
 				83648FCB2754FEC2004AB46A /* ResponseModel.swift in Sources */,
 				83648FBC2754FE42004AB46A /* LogManager.swift in Sources */,
@@ -519,6 +526,7 @@
 				8364907327552C3A004AB46A /* Factories.swift in Sources */,
 				8364902A27550630004AB46A /* MainTabBarController.swift in Sources */,
 				83648FFA27550245004AB46A /* ActivityInidicatorViewStyle+Animation.swift in Sources */,
+				8364912A27566A7F004AB46A /* TableviewPaginator.swift in Sources */,
 				83649021275503AB004AB46A /* NewsServices.swift in Sources */,
 				8364906127551809004AB46A /* CellViewModel.swift in Sources */,
 				8364906E27551F5B004AB46A /* NewsCell.swift in Sources */,
