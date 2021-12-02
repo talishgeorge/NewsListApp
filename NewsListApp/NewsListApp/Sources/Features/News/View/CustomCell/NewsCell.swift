@@ -27,7 +27,7 @@ class NewsCell : UITableViewCell {
         newsImage.topAnchor.constraint(equalTo: marginGuide.topAnchor).isActive = true
         newsImage.widthAnchor.constraint(equalToConstant: 50).isActive = true
         newsImage.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        
+                
         // configure titleLabel
         contentView.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false

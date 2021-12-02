@@ -12,7 +12,7 @@ class Factories {
     // MARK: - Labels
     
     var titleLabel : UILabel = {
-        let lbl = UILabel()
+        let lbl = PaddingLabel(withInsets: 5, 5, 10, 5)
         lbl.textColor = .black
         lbl.font = UIFont.boldSystemFont(ofSize: 16)
         lbl.textAlignment = .left
@@ -20,7 +20,7 @@ class Factories {
     }()
     
     var descriptionLabel : UILabel = {
-        let lbl = UILabel()
+        let lbl = PaddingLabel(withInsets: 5, 5, 10, 5)
         lbl.textColor = .black
         lbl.font = UIFont.systemFont(ofSize: 16)
         lbl.textAlignment = .left
@@ -58,44 +58,5 @@ class Factories {
         label.backgroundColor = color
         
         return label
-    }
-    
-    // MKAR: - Misc
-    
-    func makeStackView(withOrientation axis: NSLayoutConstraint.Axis) -> UIStackView {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = axis
-        stackView.distribution = .fill
-        stackView.alignment = .fill
-        stackView.spacing = 8.0
-        
-        return stackView
-    }
-    
-    func makeView(color: UIColor = .red) -> UIView {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = color
-        
-        return view
-    }
-    
-    func makeScrollView() -> UIScrollView {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return scrollView
-    }
-    
-    public func makeSpacerView(height: CGFloat? = nil) -> UIView {
-        let spacerView = UIView(frame: .zero)
-        
-        if let height = height {
-            spacerView.heightAnchor.constraint(equalToConstant: height).setActiveBreakable()
-        }
-        spacerView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return spacerView
     }
 }

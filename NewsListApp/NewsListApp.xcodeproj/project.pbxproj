@@ -65,6 +65,7 @@
 		8364916127579A25004AB46A /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83648FC52754FEA2004AB46A /* RequestModel.swift */; };
 		8364916527579A40004AB46A /* LogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83648FBB2754FE42004AB46A /* LogManager.swift */; };
 		8364916927579A5B004AB46A /* ResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83648FCA2754FEC2004AB46A /* ResponseModel.swift */; };
+		836491712758713A004AB46A /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836491702758713A004AB46A /* PaddingLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +128,7 @@
 		836490B12755AC9D004AB46A /* NewsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsHeaderView.swift; sourceTree = "<group>"; };
 		8364912927566A7F004AB46A /* TableviewPaginator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableviewPaginator.swift; sourceTree = "<group>"; };
 		8364912E27566CD8004AB46A /* LoadMoreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreCell.swift; sourceTree = "<group>"; };
+		836491702758713A004AB46A /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +249,7 @@
 				8364907227552C3A004AB46A /* Factories.swift */,
 				83648FF62755021B004AB46A /* ActivityIndicatorView */,
 				8364912927566A7F004AB46A /* TableviewPaginator.swift */,
+				836491702758713A004AB46A /* PaddingLabel.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				8364900727550289004AB46A /* UIView+ContainerView.swift in Sources */,
 				83648FC12754FE72004AB46A /* WebserviceManager.swift in Sources */,
 				8364907B27552E55004AB46A /* UIColor+Extensions.swift in Sources */,
+				836491712758713A004AB46A /* PaddingLabel.swift in Sources */,
 				8364908027552EA3004AB46A /* NSLayoutConstraint+Extensions.swift in Sources */,
 				8364908D2755302A004AB46A /* BaseViewController.swift in Sources */,
 				8364912F27566CD8004AB46A /* LoadMoreCell.swift in Sources */,
