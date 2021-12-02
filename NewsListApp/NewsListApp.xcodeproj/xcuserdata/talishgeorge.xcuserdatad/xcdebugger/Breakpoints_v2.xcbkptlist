@@ -14,8 +14,8 @@
             filePath = "NewsListApp/Sources/Features/News/View/NewsController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "getPaginatedLoadMoreCell(paginator:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -23,17 +23,175 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D8F09859-3547-49F1-BB03-15CA90AEAA5E"
+            uuid = "B465DEA2-6527-4E2B-B11C-C0297D349600"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NewsListApp/Sources/Features/News/View/NewsController.swift"
+            filePath = "NewsListApp/Sources/Features/News/ViewModel/CategoryListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181"
-            landmarkName = "loadPaginatedData(offset:shouldAppend:paginator:)"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "fetchNews(by:offset:limit:shouldAppend:completion:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B465DEA2-6527-4E2B-B11C-C0297D349600 - 96c7d3366649c700"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NewsListApp.CategoryListViewModel.fetchNews(by: Swift.String, offset: Swift.Int, limit: Swift.Int, shouldAppend: Swift.Bool) -&gt; ()"
+                  moduleName = "NewsListApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/talishgeorge/Documents/NewsListApp-2021/NewsListApp/NewsListApp/Sources/Features/News/ViewModel/CategoryListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "577">
+               </Location>
+               <Location
+                  uuid = "B465DEA2-6527-4E2B-B11C-C0297D349600 - ab1cb5e28122884b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NewsListAppTests.CategoryListViewModel.fetchNews(by: Swift.String, offset: Swift.Int, limit: Swift.Int, shouldAppend: Swift.Bool) -&gt; ()"
+                  moduleName = "NewsListAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/talishgeorge/Documents/NewsListApp-2021/NewsListApp/NewsListApp/Sources/Features/News/ViewModel/CategoryListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "129"
+                  endingLineNumber = "129"
+                  offsetFromSymbolStart = "577">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DCF93122-4A7E-4D73-8358-3544348F32CF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NewsListApp/Sources/Features/News/ViewModel/CategoryListViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
+            landmarkName = "fetchNews(by:offset:limit:shouldAppend:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DCF93122-4A7E-4D73-8358-3544348F32CF - 76fa866d1d3819a0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;NewsListApp.NewsSourcesResponse, NewsListApp.ErrorModel&gt;) -&gt; () in NewsListApp.CategoryListViewModel.fetchNews(by: Swift.String, offset: Swift.Int, limit: Swift.Int, shouldAppend: Swift.Bool, completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "NewsListApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/talishgeorge/Documents/NewsListApp-2021/NewsListApp/NewsListApp/Sources/Features/News/ViewModel/CategoryListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "142"
+                  endingLineNumber = "142"
+                  offsetFromSymbolStart = "1509">
+               </Location>
+               <Location
+                  uuid = "DCF93122-4A7E-4D73-8358-3544348F32CF - 2909c6f64001325f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in closure #1 (Swift.Result&lt;NewsListApp.NewsSourcesResponse, NewsListApp.ErrorModel&gt;) -&gt; () in NewsListApp.CategoryListViewModel.fetchNews(by: Swift.String, offset: Swift.Int, limit: Swift.Int, shouldAppend: Swift.Bool, completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "NewsListApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/talishgeorge/Documents/NewsListApp-2021/NewsListApp/NewsListApp/Sources/Features/News/ViewModel/CategoryListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "143"
+                  endingLineNumber = "143"
+                  offsetFromSymbolStart = "134">
+               </Location>
+               <Location
+                  uuid = "DCF93122-4A7E-4D73-8358-3544348F32CF - 53b3b4f05aff02fc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;NewsListAppTests.NewsSourcesResponse, NewsListAppTests.ErrorModel&gt;) -&gt; () in NewsListAppTests.CategoryListViewModel.fetchNews(by: Swift.String, offset: Swift.Int, limit: Swift.Int, shouldAppend: Swift.Bool, completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "NewsListAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/talishgeorge/Documents/NewsListApp-2021/NewsListApp/NewsListApp/Sources/Features/News/ViewModel/CategoryListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "142"
+                  endingLineNumber = "142"
+                  offsetFromSymbolStart = "1509">
+               </Location>
+               <Location
+                  uuid = "DCF93122-4A7E-4D73-8358-3544348F32CF - f85bc367638de884"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in closure #1 (Swift.Result&lt;NewsListAppTests.NewsSourcesResponse, NewsListAppTests.ErrorModel&gt;) -&gt; () in NewsListAppTests.CategoryListViewModel.fetchNews(by: Swift.String, offset: Swift.Int, limit: Swift.Int, shouldAppend: Swift.Bool, completion: () -&gt; ()) -&gt; ()"
+                  moduleName = "NewsListAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/talishgeorge/Documents/NewsListApp-2021/NewsListApp/NewsListApp/Sources/Features/News/ViewModel/CategoryListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "143"
+                  endingLineNumber = "143"
+                  offsetFromSymbolStart = "134">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0BDE9435-74F4-43A0-9F58-408D16D22B51"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NewsListApp/Sources/Features/News/ViewModel/CategoryListViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "article"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "0BDE9435-74F4-43A0-9F58-408D16D22B51 - f6e9434dffb9020e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (NewsListApp.Article) -&gt; Swift.Optional&lt;NewsListApp.CategoryListViewModel.Row&gt; in NewsListApp.CategoryListViewModel.article.getter : Swift.Optional&lt;NewsListApp.CategoryListViewModel.Section&gt;"
+                  moduleName = "NewsListApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/talishgeorge/Documents/NewsListApp-2021/NewsListApp/NewsListApp/Sources/Features/News/ViewModel/CategoryListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "1085">
+               </Location>
+               <Location
+                  uuid = "0BDE9435-74F4-43A0-9F58-408D16D22B51 - be7528c108891ba"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (NewsListAppTests.Article) -&gt; Swift.Optional&lt;NewsListAppTests.CategoryListViewModel.Row&gt; in NewsListAppTests.CategoryListViewModel.article.getter : Swift.Optional&lt;NewsListAppTests.CategoryListViewModel.Section&gt;"
+                  moduleName = "NewsListAppTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/talishgeorge/Documents/NewsListApp-2021/NewsListApp/NewsListApp/Sources/Features/News/ViewModel/CategoryListViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "1085">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

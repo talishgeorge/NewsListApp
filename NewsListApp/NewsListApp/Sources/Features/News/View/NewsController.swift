@@ -43,7 +43,8 @@ class NewsController: UITableViewController {
     }
 }
 
-//Table view data source
+// MARK: - Table view data source
+
 extension NewsController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -91,7 +92,7 @@ extension NewsController {
     }
 }
 
-//Table view delegate
+// MARK: -  Table view delegate
 
 extension NewsController {
     
@@ -115,27 +116,12 @@ extension NewsController {
     }
 }
 
+// MARK: -  View model delegate
 extension NewsController: CategoryListViewModelDelegate {
-    
-    /// Refresh UI
-    func categoryListViewModelDidStartRefresh(_ viewModel: CategoryListViewModel, success: Bool?, dataCount: Int?) {
-        if success! {
-            tableviewPaginator?.incrementOffsetBy(delta: dataCount!)
-        }
         
-        tableviewPaginator?.partialDataFetchingDone()
-        
-        self.tableView.reloadData()
-        self.refreshControl?.endRefreshing()
-        ActivityIndicator.dismiss()
-    }
-    
     /// Show Error
     func categoryListViewModel(_ viewModel: CategoryListViewModel, didFinishWithError error: Error?, success: Bool?, dataCount: Int?) {
-        if success! {
-            tableviewPaginator?.incrementOffsetBy(delta: dataCount!)
-        }
-        tableviewPaginator?.partialDataFetchingDone()
+        
         guard let errorDescription = error?.localizedDescription, !errorDescription.isEmpty else {
             return
         }
@@ -143,8 +129,11 @@ extension NewsController: CategoryListViewModelDelegate {
         ActivityIndicator.dismiss()
         self.refreshControl?.endRefreshing()
         viewModel.showOfflineData()
+        self.tableView.reloadData()
     }
 }
+
+// MARK: -  Table view paginator protocol
 
 extension NewsController: TableviewPaginatorUIProtocol {
     func getTableview(paginator: TableviewPaginator) -> UITableView {
@@ -176,6 +165,18 @@ extension NewsController: TableviewPaginatorUIProtocol {
 
 extension NewsController: TableviewPaginatorProtocol {
     func loadPaginatedData(offset: Int, shouldAppend: Bool, paginator: TableviewPaginator) {
-        viewModel.fetchNews(by: ApiConstants.newsCategory, offset: offset, limit: limit, shouldAppend: shouldAppend)
+        viewModel.fetchNews(by: ApiConstants.newsCategory, offset: offset,
+                            limit: limit, shouldAppend: shouldAppend) { success, dataCount in
+            if success {
+                self.tableviewPaginator?.incrementOffsetBy(delta: dataCount)
+            }
+            
+            self.tableviewPaginator?.partialDataFetchingDone()
+            
+            self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
+            ActivityIndicator.dismiss()
+        }
     }
 }
+

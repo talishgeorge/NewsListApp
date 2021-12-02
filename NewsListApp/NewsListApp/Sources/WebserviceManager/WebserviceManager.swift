@@ -24,7 +24,7 @@ class ServiceManager {
     public var baseURL: String = "https://newsapi.org/v2/"
 }
 
-// MARK: - Public Functions
+// MARK: - Internal methods for calling webservice
 
 extension ServiceManager {
     

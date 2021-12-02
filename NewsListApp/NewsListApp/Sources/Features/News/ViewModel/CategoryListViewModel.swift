@@ -24,7 +24,6 @@ protocol TableViewSection: Equatable {
 /// Category List Model
 /// Protocol
 protocol CategoryListViewModelDelegate: class {
-    func categoryListViewModelDidStartRefresh(_ viewModel: CategoryListViewModel, success: Bool?, dataCount: Int?)
     func categoryListViewModel(_ viewModel: CategoryListViewModel, didFinishWithError error: Error?, success: Bool?, dataCount: Int?)
 }
 
@@ -40,20 +39,9 @@ final class CategoryListViewModel: BaseViewModel {
     }
 }
 
-// MARK: - Internal Methods for TableView
+// MARK: - Internal members and properties for tableview databinding
 
 extension CategoryListViewModel {
-    
-    /// Return Number of Sections for UITableView
-    var numberOfSections: Int {
-        categories.count
-    }
-    
-    /// Return Number of Rows in Sections for UITableView
-    /// - Parameter section: Int Value
-    func numberOfRowsInSection(_ section: Int) -> Int {
-        categories[section].articles.count
-    }
     
     struct Section: TableViewSection {
         
@@ -103,9 +91,20 @@ extension CategoryListViewModel {
     }
 }
 
-// MARK: - Internal Methods
+// MARK: - Internal methods
 
 extension CategoryListViewModel {
+    
+    /// Return Number of Sections for UITableView
+    var numberOfSections: Int {
+        categories.count
+    }
+    
+    /// Return Number of Rows in Sections for UITableView
+    /// - Parameter section: Int Value
+    func numberOfRowsInSection(_ section: Int) -> Int {
+        categories[section].articles.count
+    }
     
     /// Return Category ViewModel
     /// - Parameter index: Int Value
@@ -113,33 +112,26 @@ extension CategoryListViewModel {
         CategoryViewModel(name: categories[index].title, articles: categories[index].articles)
     }
     
-    /// Return Article For Section
-    /// - Parameters:
-    ///   - section: Int Value
-    ///   - index: Int Value
-    func articleForSectionAtIndex(section: Int, index: Int) -> ArticleViewModel {
-        categoryAtIndex(index: section).articleAtIndex(index)
-    }
-    
     /// Fetch News
     /// - Parameter category: String
-    func fetchNews(by category: String, offset: Int, limit: Int, shouldAppend: Bool) {
-        let closureSelf = self
+    func fetchNews(by category: String, offset: Int, limit: Int, shouldAppend: Bool, completion: @escaping(Bool, Int) -> Void) {
         let page = offset / limit
         print("page: \(page+1), per-page=\(limit)")
-        webService.getNews(page: page, perPage: limit, category: category) { result in
+        webService.getNews(page: page, perPage: limit, category: category) { [weak self]  result in
+            guard let self = self else { return }
             var categories = [Category]()
             switch result {
             case Result.success(let response):
                 let category = Category(title: "General", articles: response.articles)
                 categories.append(category)
-                closureSelf.categories = categories
+                self.categories = categories
                 DispatchQueue.main.async {
-                    closureSelf.delegate?.categoryListViewModelDidStartRefresh(self, success: true, dataCount: categories[0].articles.count)
+                    completion(true, categories[0].articles.count)
                 }
             case Result.failure(let error):
                 DispatchQueue.main.async {
-                    closureSelf.delegate?.categoryListViewModel(self, didFinishWithError: error, success: false, dataCount: 0)
+                    self.delegate?.categoryListViewModel(self, didFinishWithError: error, success: false, dataCount: 0)
+                    completion(false, 0)
                 }
             }
         }
@@ -148,7 +140,6 @@ extension CategoryListViewModel {
     /// Show offline data
     func showOfflineData() {
         categories = Category.loadLocalData()
-        self.delegate?.categoryListViewModelDidStartRefresh(self, success: true, dataCount: categories[0].articles.count)
     }
 }
 
@@ -156,14 +147,4 @@ extension CategoryListViewModel {
 struct CategoryViewModel {
     let name: String
     let articles: [Article]
-}
-
-extension CategoryViewModel {
-    
-    /// Return Article View Model
-    /// - Parameter index:Int Value
-    func articleAtIndex(_ index: Int) -> ArticleViewModel {
-        let article = self.articles[index]
-        return ArticleViewModel(article)
-    }
 }
