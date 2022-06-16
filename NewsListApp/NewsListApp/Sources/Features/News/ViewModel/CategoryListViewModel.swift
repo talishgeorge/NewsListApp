@@ -52,7 +52,7 @@ extension CategoryListViewModel {
     /// Return Number of Rows in Sections for UITableView
     /// - Parameter section: Int Value
     func numberOfRowsInSection(_ section: Int) -> Int {
-        categories[section].articles.count
+        categories[section].articles.count - 1
     }
     
     struct Section: TableViewSection {
